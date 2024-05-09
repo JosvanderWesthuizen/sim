@@ -233,7 +233,7 @@ class GetupFreeEnv(LeggedRobot):
         joint_pos = self.dof_pos.clone()
         pos_target = self.ref_dof_pos.clone()
         diff = joint_pos - pos_target
-        r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1)
+        r = torch.exp(-2 * torch.norm(diff, dim=1)) #- 0.2 * torch.norm(diff, dim=1)
         return r
 
     def _reward_orientation(self):

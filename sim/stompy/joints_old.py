@@ -143,59 +143,55 @@ class Stompy(Node):
     @classmethod
     def default_standing(cls) -> Dict[str, float]:
         return {
-            "joint_head_1_x4_1_dof_x4": -0.9425,
-            "joint_legs_1_x8_1_dof_x8": -0.5061454830783556,
-            "joint_legs_1_x8_2_dof_x8": 0.5061454830783556,
-            "joint_legs_1_left_leg_1_x8_1_dof_x8": -0.5061454830783556,
-            "joint_legs_1_left_leg_1_x10_1_dof_x10": 0.9773843811168246,
-            "joint_legs_1_right_leg_1_x8_1_dof_x8": -0.5061454830783556,
-            "joint_legs_1_right_leg_1_x10_2_dof_x10": -0.9773843811168246,
-            "joint_legs_1_left_leg_1_knee_revolute": -0.10471975511965978,
-            "joint_legs_1_right_leg_1_knee_revolute": 0.10471975511965978,
-            "joint_legs_1_left_leg_1_ankle_revolute": 0.0,
-            "joint_legs_1_right_leg_1_ankle_revolute": 0.0,
-            "joint_legs_1_left_leg_1_x4_1_dof_x4": 0.0,
-            "joint_legs_1_right_leg_1_x4_1_dof_x4": 0.0,
-            # left arm
-            "joint_left_arm_2_x8_1_dof_x8": -1.5708,  # 90
-            "joint_left_arm_2_x8_2_dof_x8": -0.4363,  # 25
-            "joint_left_arm_2_x6_1_dof_x6": -0.5236,  # 30
-            "joint_left_arm_2_x6_2_dof_x6": -1.5708,
-            "joint_left_arm_2_x4_1_dof_x4": -0.0,
-            "joint_left_arm_2_hand_1_x4_1_dof_x4": -0.8727,
-            # right arm
-            "joint_right_arm_1_x8_1_dof_x8": 1.5708,
-            "joint_right_arm_1_x8_2_dof_x8": 0.4363,
-            "joint_right_arm_1_x6_1_dof_x6": 0.5236,
-            "joint_right_arm_1_x6_2_dof_x6": 1.5708,
-            "joint_right_arm_1_x4_1_dof_x4": 0.0,
-            "joint_right_arm_1_hand_1_x4_1_dof_x4": -0.8727,
+            Stompy.head.left_right: np.deg2rad(-2),  # -0.03
+            # arms
+            Stompy.left_arm.shoulder_yaw: np.deg2rad(-69.5),  # -1.21
+            Stompy.left_arm.shoulder_pitch: np.deg2rad(-93),  # 1.61
+            Stompy.right_arm.shoulder_yaw: np.deg2rad(85),  # 1.48
+            Stompy.right_arm.shoulder_pitch: np.deg2rad(104),  # 1.81
+            # legs
+            Stompy.legs.left.hip_roll: np.deg2rad(29),  # 0.5
+            Stompy.legs.left.hip_yaw: np.deg2rad(-29),  # -0.5
+            Stompy.legs.left.hip_pitch: np.deg2rad(56),  # 0.97
+            Stompy.legs.right.hip_roll: np.deg2rad(-29),  # -0.5
+            Stompy.legs.right.hip_yaw: np.deg2rad(-29),  # -0.5
+            Stompy.legs.right.hip_pitch: np.deg2rad(-56),  # -0.97
+            Stompy.legs.left.knee: np.deg2rad(-6),  # -0.1
+            Stompy.legs.right.knee: np.deg2rad(6),  # 0.1
+            Stompy.legs.left.ankle: np.deg2rad(0),  # 0
+            Stompy.legs.right.ankle: np.deg2rad(0),  # 0
+            Stompy.legs.left.foot_roll: np.deg2rad(0),  # 0
+            Stompy.legs.right.foot_roll: np.deg2rad(0),  # 0
         }
 
     @classmethod
     def default_sitting(cls) -> Dict[str, float]:
         return {
-            "joint_head_1_x4_1_dof_x4": -0.9425,
+            Stompy.head.left_right: np.deg2rad(-3),
+            Stompy.head.up_down: 0.0,
+            Stompy.torso.pitch: 0.0,
+            # arms
+            Stompy.left_arm.shoulder_yaw: np.deg2rad(-88),
+            Stompy.left_arm.shoulder_pitch: np.deg2rad(-30),
+            Stompy.left_arm.shoulder_roll: np.deg2rad(-190),
+            Stompy.left_arm.elbow_yaw: np.deg2rad(-88),
+            Stompy.right_arm.shoulder_yaw: np.deg2rad(88),
+            Stompy.right_arm.shoulder_pitch: np.deg2rad(30),
+            Stompy.right_arm.shoulder_roll: np.deg2rad(190),
+            Stompy.right_arm.elbow_yaw: np.deg2rad(88),
+            # hands
+            Stompy.left_arm.hand.hand_roll: np.deg2rad(-60),
+            Stompy.right_arm.hand.hand_roll: np.deg2rad(-60),
             # legs
-            "joint_legs_1_left_leg_1_x10_1_dof_x10": 0.6283,  # 36 deg
-            "joint_legs_1_left_leg_1_ankle_revolute": 0.3491,  # 20 deg
-            "joint_legs_1_left_leg_1_knee_revolute": -0.8029,  # -46 deg
-            "joint_legs_1_right_leg_1_knee_revolute": 0.8029,  # 46 deg
-            "joint_legs_1_right_leg_1_x10_2_dof_x10": -0.6283,  # -36 deg
-            # left arm
-            "joint_left_arm_2_x8_1_dof_x8": -1.5708,  # 90
-            "joint_left_arm_2_x8_2_dof_x8": -0.4363,  # 25
-            "joint_left_arm_2_x6_1_dof_x6": -0.5236,  # 30
-            "joint_left_arm_2_x6_2_dof_x6": -1.5708,
-            "joint_left_arm_2_x4_1_dof_x4": -0.0,
-            "joint_left_arm_2_hand_1_x4_1_dof_x4": -0.8727,
-            # right arm
-            "joint_right_arm_1_x8_1_dof_x8": 1.5708,
-            "joint_right_arm_1_x8_2_dof_x8": 0.4363,
-            "joint_right_arm_1_x6_1_dof_x6": 0.5236,
-            "joint_right_arm_1_x6_2_dof_x6": 1.5708,
-            "joint_right_arm_1_x4_1_dof_x4": 0.0,
-            "joint_right_arm_1_hand_1_x4_1_dof_x4": -0.8727,
+            Stompy.legs.left.hip_roll: np.deg2rad(29),
+            Stompy.legs.left.hip_yaw: np.deg2rad(-29),
+            Stompy.legs.left.hip_pitch: np.deg2rad(56),
+            Stompy.legs.right.hip_roll: np.deg2rad(-29),
+            Stompy.legs.right.hip_yaw: np.deg2rad(-29),
+            # check this
+            Stompy.legs.right.hip_pitch: np.deg2rad(-56),
+            Stompy.legs.left.knee: np.deg2rad(-6),
+            Stompy.legs.right.knee: np.deg2rad(6),
         }
 
 
@@ -208,7 +204,27 @@ class StompyFixed(Stompy):
 
     @classmethod
     def default_standing(cls) -> Dict[str, float]:
-        return Stompy.default_standing()
+        return {
+            Stompy.head.left_right: np.deg2rad(-2),  # -0.03
+            # arms
+            Stompy.left_arm.shoulder_yaw: np.deg2rad(-69.5),  # -1.21
+            Stompy.left_arm.shoulder_pitch: np.deg2rad(-93),  # 1.61
+            Stompy.right_arm.shoulder_yaw: np.deg2rad(85),  # 1.48
+            Stompy.right_arm.shoulder_pitch: np.deg2rad(104),  # 1.81
+            # legs
+            Stompy.legs.left.hip_roll: np.deg2rad(29),  # 0.5
+            Stompy.legs.left.hip_yaw: np.deg2rad(-29),  # -0.5
+            Stompy.legs.left.hip_pitch: np.deg2rad(56),  # 0.97
+            Stompy.legs.right.hip_roll: np.deg2rad(-29),  # -0.5
+            Stompy.legs.right.hip_yaw: np.deg2rad(-29),  # -0.5
+            Stompy.legs.right.hip_pitch: np.deg2rad(-56),  # -0.97
+            Stompy.legs.left.knee: np.deg2rad(-6),  # -0.1
+            Stompy.legs.right.knee: np.deg2rad(6),  # 0.1
+            Stompy.legs.left.ankle: np.deg2rad(0),  # 0
+            Stompy.legs.right.ankle: np.deg2rad(0),  # 0
+            Stompy.legs.left.foot_roll: np.deg2rad(0),  # 0
+            Stompy.legs.right.foot_roll: np.deg2rad(0),  # 0
+        }
 
     def default_limits(cls) -> Dict[str, Dict[str, float]]:
         return {

@@ -179,9 +179,9 @@ class GetupCfg(LeggedRobotCfg):
 
         class scales:  # noqa: N801
             # force the model to learn specific position?
-            # joint_pos = 2.
+            joint_pos = 2.1
             # height reward
-            base_height = 1
+            # base_height = 1
             # base_acc = 0.2
             # energy
             # action_smoothness = -0.002
